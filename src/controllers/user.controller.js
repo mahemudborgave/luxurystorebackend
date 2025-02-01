@@ -26,7 +26,7 @@ const addNewPost = async (req, res) => {
 
 const getPost = async (req, res) => {
   try {
-    const data = await DataModel.find(); // Retrieve all documents from the 'videodetail' collection
+    const data = await DataModel.find().sort({ createdAt: -1 }); // Retrieve all documents and sort by 'createdAt' in descending order
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching data', error });
